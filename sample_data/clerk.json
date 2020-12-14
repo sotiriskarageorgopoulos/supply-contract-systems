@@ -1,0 +1,12 @@
+{
+    "person": {
+        "personId": "87r787rw8",
+        "personName": "John",
+        "personSurname": "Brown",
+        "personOtherName": "Andrew",
+        "personJobTitle": "clerk"
+    },
+    "email": "clerk@domain.com",
+    "password": "jdjsj122jncs",
+    "hospitalLabel": "Hospital 1"
+}

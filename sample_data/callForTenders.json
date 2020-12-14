@@ -1,0 +1,29 @@
+{
+    "person": {
+        "personId": "klanxhbx3",
+        "personName": "Paolo",
+        "personSurname": "Maldini",
+        "personJobTitle": "manager"
+    },
+    "hospital": {
+        "id": "S1",
+        "label": "Supplier 1",
+        "email": "supplier@domain.com",
+        "address": "Via dei Piccolomini, 2, 20151 Milano MI, Italy"
+    },
+    "tenderRequirements": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In iaculis nunc sed augue lacus viverra vitae congue eu.",
+        "Nec nam aliquam sem et tortor consequat. Nunc faucibus a pellentesque sit amet porttitor. Tincidunt dui ut ornare lectus sit. Ornare lectus sit amet est placerat in egestas erat imperdiet.",
+        "Tellus cras adipiscing enim eu turpis egestas. Nunc eget lorem dolor sed viverra ipsum nunc aliquet bibendum. Sapien pellentesque habitant morbi tristique senectus."
+    ],
+    "digitalSignature": {
+        "signatureId": "",
+        "validationDateTime": "",
+        "signatureHash": ""
+    },
+    "tenderDuration": {
+        "startDateTime": "2021-01-28T13:31:28Z",
+        "endDateTime": "2021-02-28T13:31:28Z"
+    }
+}
