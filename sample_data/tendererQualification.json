@@ -1,0 +1,51 @@
+{
+    "supplier": {
+        "id": "S1",
+        "label": "Supplier 1",
+        "email": "supplier@domain.com",
+        "address": "Av. del General Perón, 28020 Madrid, Spain"
+    },
+    "qualifications": [{
+            "tendererCapability": "capability1",
+            "description": "Viverra nam libero justo laoreet sit amet cursus sit amet. In hac habitasse platea dictumst quisque sagittis purus sit. Aliquam eleifend mi in nulla posuere sollicitudin. Dui nunc mattis enim ut tellus elementum sagittis vitae et.",
+            "evidenceId": "E1"
+        },
+        {
+            "tendererCapability": "capability2",
+            "description": "Viverra nam libero justo laoreet sit amet cursus sit amet. In hac habitasse platea dictumst quisque sagittis purus sit. Aliquam eleifend mi in nulla posuere sollicitudin. Dui nunc mattis enim ut tellus elementum sagittis vitae et.",
+            "evidenceId": "E2"
+        },
+        {
+            "tendererCapability": "capability3",
+            "description": "Viverra nam libero justo laoreet sit amet cursus sit amet. In hac habitasse platea dictumst quisque sagittis purus sit. Aliquam eleifend mi in nulla posuere sollicitudin. Dui nunc mattis enim ut tellus elementum sagittis vitae et.",
+            "evidenceId": "E3"
+        },
+        {
+            "tendererCapability": "capability4",
+            "description": "Viverra nam libero justo laoreet sit amet cursus sit amet. In hac habitasse platea dictumst quisque sagittis purus sit. Aliquam eleifend mi in nulla posuere sollicitudin. Dui nunc mattis enim ut tellus elementum sagittis vitae et.",
+            "evidenceId": "E4"
+        }
+    ],
+    "evidences": [{
+            "evidenceId": "E1",
+            "description": "https://evidence1.it"
+        },
+        {
+            "evidenceId": "E2",
+            "description": "https://evidence2.it"
+        },
+        {
+            "evidenceId": "E3",
+            "description": "https://evidence3.it"
+        },
+        {
+            "evidenceId": "E4",
+            "description": "Viverra nam libero justo laoreet sit amet cursus sit amet."
+        }
+    ],
+    "digitalSignature": {
+        "signatureId": "",
+        "validationDateTime": "",
+        "signatureHash": ""
+    }
+}

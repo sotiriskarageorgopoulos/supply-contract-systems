@@ -4,7 +4,6 @@ require('dotenv').config()
 const certificate = jsru.readFile(process.env.DIR + "/certificate.pem", "utf-8");
 const privateKey = jsru.readFileUTF8(process.env.DIR + '/key.pem');
 
-
 const createDigitalSignature = (nameOfHospital) => {
     let sig = new jsr.KJUR.crypto.Signature({ "alg": "SHA1withRSA" });
     sig.init(privateKey);
@@ -23,4 +22,4 @@ const validateDigitalSignature = (nameOfHospital, signature) => {
     return sig.verify(signature);
 }
 
-module.exports = { createDigitalSignature, validateDigitalSignature }
+module.exports = { validateDigitalSignature, createDigitalSignature }

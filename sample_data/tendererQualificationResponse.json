@@ -1,0 +1,29 @@
+{
+    "hospital": {
+        "id": "H1",
+        "label": "Hospital 1",
+        "email": "h1@domain.com",
+        "address": "Via dei Piccolomini, 2, 20151 Milano MI, Italy"
+    },
+    "supplier": {
+        "id": "S1",
+        "label": "Supplier 1",
+        "email": "supplier@domain.com",
+        "address": "Av. del General Perón, 28020 Madrid, Spain"
+    },
+    "qualificationResolution": {
+        "decision": "true",
+        "decisionDate": "2021-03-05T13:31:28Z"
+    },
+    "person": {
+        "personId": "cnsjncsj",
+        "personName": "Paolo",
+        "personSurname": "Maldini",
+        "personJobTitle": "manager"
+    },
+    "digitalSignature": {
+        "signatureId": "",
+        "validationDateTime": "",
+        "signatureHash": ""
+    }
+}
