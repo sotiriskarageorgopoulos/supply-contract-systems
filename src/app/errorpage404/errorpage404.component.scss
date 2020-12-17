@@ -1,0 +1,42 @@
+@import '../app.component';
+.error-page-box {
+    padding-top: 15%;
+    padding-bottom: 26.8%;
+    margin-left: auto;
+    margin-right: auto;
+    @include bg('component-bg');
+}
+
+.question-style,
+.error-number {
+    color: whitesmoke;
+    font-size: 15rem;
+    margin-left: 20%;
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.question-style {
+    font-size: 13rem;
+    margin-top: -100px;
+    animation: rotating 2.5s linear infinite;
+}
+
+.text {
+    font-size: map-get($font-sizes, "biggest");
+    color: whitesmoke;
+    margin-left: 150px;
+    margin-top: 4%;
+}
+
+p.text a {
+    color: whitesmoke;
+    text-decoration: underline;
+}

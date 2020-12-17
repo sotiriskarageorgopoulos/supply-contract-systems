@@ -1,0 +1,18 @@
+<footer class="container-fluid" *ngIf="nameOfComponent !== 'Errorpage404Component'" [ngClass]="{
+    'footer-register': nameOfComponent === 'RegisterComponent',
+    'footer-login': nameOfComponent === 'LoginComponent'
+}">
+    <article class="row">
+        <section class="col-sm-4">
+            <p class="big-fonts m-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae sint blanditiis recusandae eius provident dolorum, nam veritatis iusto repudiandae omnis vitae reiciendis! Dignissimos, fugiat ab dolorem deleniti necessitatibus eveniet laborum.</p>
+        </section>
+        <section class="col-sm-4">
+            <p class="copyright-text-alignment mt-5">&copy; Copyright 2020</p>
+        </section>
+        <section class="col-sm-4">
+            <a class="btn btn-social-icon" href="mailto:">
+                <i class="fa fa-envelope-o biggest-fonts"></i>
+            </a>
+        </section>
+    </article>
+</footer>

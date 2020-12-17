@@ -1,0 +1,22 @@
+@import '../app.component';
+.footer-login,
+.footer-register {
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    color: whitesmoke;
+    @include bg('component-bg');
+}
+
+.copyright-text-alignment {
+    margin-left: 40%;
+}
+
+.big-fonts {
+    font-size: map-get($font-sizes, "big");
+}
+
+.biggest-fonts {
+    font-size: map-get($font-sizes, "biggest");
+    color: whitesmoke;
+}
