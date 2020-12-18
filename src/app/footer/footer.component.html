@@ -1,6 +1,8 @@
 <footer class="container-fluid" *ngIf="nameOfComponent !== 'Errorpage404Component'" [ngClass]="{
     'footer-register': nameOfComponent === 'RegisterComponent',
-    'footer-login': nameOfComponent === 'LoginComponent'
+    'footer-login': nameOfComponent === 'LoginComponent',
+    'footer-home': nameOfComponent === 'HomeComponent',
+    'footer-import-xml': nameOfComponent === 'ImportXMLComponent'
 }">
     <article class="row">
         <section class="col-sm-4">

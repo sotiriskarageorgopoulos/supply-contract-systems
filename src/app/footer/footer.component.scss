@@ -1,11 +1,18 @@
 @import '../app.component';
 .footer-login,
-.footer-register {
+.footer-home,
+.footer-register,
+.footer-import-xml {
     width: 100%;
     position: absolute;
     bottom: 0px;
     color: whitesmoke;
     @include bg('component-bg');
+}
+
+.footer-home {
+    position: inherit;
+    bottom: -900px
 }
 
 .copyright-text-alignment {

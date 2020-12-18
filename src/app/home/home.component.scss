@@ -1,0 +1,26 @@
+@import '../app.component';
+.forms-bg {
+    @include bg('component-bg');
+}
+
+form {
+    padding: 5%;
+    margin: 10% auto 0% auto;
+    color: #17a2b8;
+    box-shadow: 5px 10px whitesmoke;
+    @include bg('form-bg')
+}
+
+.req-add-btn,
+.next-btn {
+    @include form-btn-style;
+}
+
+.req-add-btn {
+    width: 40%;
+    margin-left: 0;
+}
+
+.form-tender-duration {
+    margin-bottom: 20%;
+}

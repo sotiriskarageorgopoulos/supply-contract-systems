@@ -1,1 +1,91 @@
-<p>home works!</p>
+<section class="container-fluid forms-bg">
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <form method="POST" action="">
+                <h1>Person Details</h1>
+                <div class="form-group">
+                    <label for="id">ID*: </label>
+                    <input type="text" class="form-control" id="id" name="id" required>
+                </div>
+                <div class="form-group">
+                    <label for="name">Name*: </label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="surname">Surname*: </label>
+                    <input type="text" class="form-control" id="surname" name="surname" required>
+                </div>
+                <div class="form-group">
+                    <label>Other Name: </label>
+                    <input type="text" class="form-control" id="othername" name="othername" required>
+                </div>
+                <div class="form-group">
+                    <label for="jobtitle">Job Title*: </label>
+                    <select name="jobtitle" id="jobtitle" class="form-control" required>
+            <option value="">Select...</option>
+            <option value="clerk">clerk</option>
+            <option value="manager">manager</option>
+          </select>
+                </div>
+                <button type="submit" class="btn btn-sm next-btn">Next</button>
+            </form>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <form method="POST" action="">
+                <h1>Hospital Details</h1>
+                <div class="form-group">
+                    <label for="id">ID*:</label>
+                    <input type="text" id="id" class="form-control" name="id" required>
+                </div>
+                <div class="form-group">
+                    <label for="name">Name*:</label>
+                    <input type="text" id="name" class="form-control" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email*:</label>
+                    <input type="text" id="email" class="form-control" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address*:</label>
+                    <input type="text" id="address" class="form-control" name="address" required>
+                </div>
+                <button type="submit" class="btn btn-sm next-btn">Next</button>
+            </form>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <form method="POST" action="">
+                <!--ΧΡΕΙΑΖΕΤΑΙ JS ΓΙΑ ΔΥΝΑΜΙΚΗ ΕΜΦΑΝΙΣΗ ΠΕΔΙΩΝ-->
+                <h1>Requirements</h1>
+                <button type="button" class="btn btn-sm req-add-btn">Add Requirement</button>
+            </form>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <form method="POST" action="" class="form-tender-duration">
+                <h1>Tender Duration</h1>
+                <div class="form-group">
+                    <label for="startdatetime">Start Datetime*:</label>
+                    <input type="datetime-local" id="startdatetime" class="form-control" name="startdatetime" required>
+                </div>
+                <div class="form-group">
+                    <label for="enddatetime">End Datetime*:</label>
+                    <input type="datetime-local" id="enddatetime" class="form-control" name="endDateTime" required>
+                </div>
+                <button type="submit" class="btn btn-sm next-btn">Submit</button>
+            </form>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</section>

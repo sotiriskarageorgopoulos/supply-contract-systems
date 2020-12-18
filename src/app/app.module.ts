@@ -14,6 +14,7 @@ import { routes } from './routes';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DataSharingService } from './services/dataSharing/data-sharing.service';
+import { ImportXMLComponent } from './import-xml/import-xml.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DataSharingService } from './services/dataSharing/data-sharing.service'
     NotificationsComponent,
     Errorpage404Component,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    ImportXMLComponent
   ],
   imports: [
     BrowserModule,
