@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatIconModule} from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -15,6 +17,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DataSharingService } from './services/dataSharing/data-sharing.service';
 import { ImportXMLComponent } from './import-xml/import-xml.component';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import { ImportXMLComponent } from './import-xml/import-xml.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    MatBadgeModule,
+    MatIconModule
   ],
   providers: [
     DataSharingService

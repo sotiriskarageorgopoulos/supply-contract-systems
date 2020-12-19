@@ -2,12 +2,19 @@
 .footer-login,
 .footer-home,
 .footer-register,
+.footer-manager-response,
+.footer-notifications,
 .footer-import-xml {
     width: 100%;
     position: absolute;
     bottom: 0px;
     color: whitesmoke;
     @include bg('component-bg');
+}
+
+.footer-manager-response,
+.footer-notifications {
+    position: inherit;
 }
 
 .footer-home {

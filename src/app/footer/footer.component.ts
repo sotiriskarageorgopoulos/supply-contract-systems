@@ -9,6 +9,7 @@ import { DataSharingService } from '../services/dataSharing/data-sharing.service
 export class FooterComponent implements OnInit {
   @Input()
   nameOfComponent: string;
+  year:number = new Date().getFullYear();
 
   constructor(private ds:DataSharingService) {}
 

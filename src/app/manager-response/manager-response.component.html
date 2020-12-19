@@ -1,1 +1,72 @@
-<p>manager-response works!</p>
+<section class="container-fluid bg">
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4 tender-message">
+            <p><b>Supplier Name: </b>Supplier 1</p>
+            <p><b>Supplier Email: </b> supplier@domain.com</p>
+            <h1>Qualifications & Evidences</h1>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Capabilities</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Evidence</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>capability1</td>
+                        <td>Viverra nam libero justo laoreet sit amet cursus sit amet. In hac habitasse platea dictumst quisque sagittis purus sit. Aliquam eleifend mi in nulla posuere sollicitudin. Dui nunc mattis enim ut tellus elementum sagittis vitae
+                            et.
+                        </td>
+                        <td>evidence1</td>
+                    </tr>
+                    <tr>
+                        <td>capability2</td>
+                        <td>Viverra nam libero justo laoreet sit amet cursus sit amet. In hac habitasse platea dictumst quisque sagittis purus sit. Aliquam eleifend mi in nulla posuere sollicitudin. Dui nunc mattis enim ut tellus elementum sagittis vitae
+                            et.
+                        </td>
+                        <td>evidence2</td>
+                    </tr>
+                    <tr>
+                        <td>capability3</td>
+                        <td>Viverra nam libero justo laoreet sit amet cursus sit amet. In hac habitasse platea dictumst quisque sagittis purus sit. Aliquam eleifend mi in nulla posuere sollicitudin. Dui nunc mattis enim ut tellus elementum sagittis vitae
+                            et.
+                        </td>
+                        <td>evidence3</td>
+                    </tr>
+                    <tr>
+                        <td>capability4</td>
+                        <td>Viverra nam libero justo laoreet sit amet cursus sit amet. In hac habitasse platea dictumst quisque sagittis purus sit. Aliquam eleifend mi in nulla posuere sollicitudin. Dui nunc mattis enim ut tellus elementum sagittis vitae
+                            et.
+                        </td>
+                        <td>evidence4</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><b>Digital Signature:</b> vdhvjncsncscnkanckanckanckanckanckanckancka</p>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <form method="POST" action="" class="form-response">
+                <h1>Response</h1>
+                <div class="form-group">
+                    <label for="decision">Decision*:</label>
+                    <select id="decision" name="decision" class="form-control" required>
+                        <option>Select...</option>
+                        <option value="true">Accept</option>
+                        <option value="false">Decline</option>
+                    </select>
+                </div>
+                <button class="btn btn-sm btn-danger" type="button" id="btn-add-exclusion-reason" (click)="showExclusionReasonInput()">Add Exclusion Reason</button>
+                <div class="form-group" id="er"></div>
+                <div id="rm-btn"></div>
+                <button class="btn btn-sm btn-dark" type="submit">Send Message</button>
+            </form>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</section>

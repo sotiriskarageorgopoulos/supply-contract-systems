@@ -1,0 +1,24 @@
+@import '../app.component';
+.tenders-bg {
+    @include bg('component-bg');
+}
+
+.list-bg,
+.pagination-bg {
+    color: #17a2b8;
+    @include bg('form-bg')
+}
+
+.pagination-bg:hover {
+    background-color: #707070;
+    color: whitesmoke;
+}
+
+.pagination {
+    margin-top: 5%;
+}
+
+.list-style {
+    margin: 5% auto 50% auto;
+    width: 40%;
+}
