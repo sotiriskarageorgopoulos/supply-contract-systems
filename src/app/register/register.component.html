@@ -3,31 +3,31 @@
         <div class="col-sm-4"></div>
         <div class="col-sm-3">
             <h1 class="sys-title">Hospitals Contract System</h1>
-            <form action="" method="POST" class="register-form">
+            <form action="" method="POST" class="register-form" [formGroup]='registerForm'>
                 <h2 class="text-center">Register Form</h2>
                 <div class="form-group">
                     <label for="name">Name*: </label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name..." required>
+                    <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter Name..." required>
                 </div>
                 <div class="form-group">
                     <label for="surname">Surname*:</label>
-                    <input type="text" class="form-control" id="surname" name="surname" placeholder="Enter Surname..." required>
+                    <input type="text" class="form-control" id="surname" formControlName="surname" placeholder="Enter Surname..." required>
                 </div>
                 <div class="form-group">
                     <label for="othername">Other Name:</label>
-                    <input type="text" class="form-control" id="othername" name="othername" placeholder="Enter other name...">
+                    <input type="text" class="form-control" id="othername" formControlName="othername" placeholder="Enter other name...">
                 </div>
                 <div class="form-group">
                     <label for="email">Email*:</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email..." required>
+                    <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter email..." required>
                 </div>
                 <div class="form-group">
                     <label for="password">Password*:</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter password..." required>
+                    <input type="password" class="form-control" id="password" formControlName="password" placeholder="Enter password..." required>
                 </div>
                 <div class="form-group">
                     <label for="jobtitle">Job Title*:</label>
-                    <select name="jobtitle" id="jobtitle" class="form-control" required>
+                    <select formControlName="jobTitle" id="jobtitle" class="form-control" required>
                         <option>Select...</option>
                         <option value="clerk">Clerk</option>
                         <option value="manager">Manager of Supplies Department</option>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="form-group">
                     <label for="hospital">Hospital*:</label>
-                    <select name="hospital" id="hospital" class="form-control" required>
+                    <select formControlName="hospital" id="hospital" class="form-control" required>
                         <option>Select...</option>
                         <option value="hospital1">hospital1</option>
                         <option value="hospital2">hospital2</option>

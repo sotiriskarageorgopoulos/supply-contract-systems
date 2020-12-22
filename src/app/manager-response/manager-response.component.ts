@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataSharingService } from '../services/dataSharing/data-sharing.service';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-manager-response',
@@ -11,10 +12,22 @@ export class ManagerResponseComponent implements OnInit {
   constructor(private ds:DataSharingService) { 
     this.ds.setNameOfComponent(this.constructor.name);
   }
-
-  ngOnInit(): void {
-  }
   counter: number = 0;
+  responseForm: FormGroup;
+  ngOnInit(): void {
+    this.createResponseForm();
+  }
+  
+  createResponseForm(): void {
+    this.responseForm = new FormGroup({
+      decision: new FormControl(),
+      exclusionReason: new FormControl(this.getExclusionReason())
+    })
+  }
+
+  getExclusionReason(): String {
+     return document.getElementsByTagName("textarea")[0].value;
+  }
 
   showExclusionReasonInput(): void {
     if(this.counter === 0) {

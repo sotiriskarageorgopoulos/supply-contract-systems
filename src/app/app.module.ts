@@ -17,7 +17,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DataSharingService } from './services/dataSharing/data-sharing.service';
 import { ImportXMLComponent } from './import-xml/import-xml.component';
-import { from } from 'rxjs';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,8 @@ import { from } from 'rxjs';
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
     MatBadgeModule,
-    MatIconModule
+    MatIconModule,
+    ReactiveFormsModule
   ],
   providers: [
     DataSharingService
