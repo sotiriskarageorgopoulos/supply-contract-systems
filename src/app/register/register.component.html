@@ -3,19 +3,29 @@
         <div class="col-sm-4"></div>
         <div class="col-sm-3">
             <h1 class="sys-title">Hospitals Contract System</h1>
-            <form action="" method="POST" class="register-form" [formGroup]='registerForm'>
+            <form (ngSubmit)="onSubmitRegisterForm()" class="register-form" [formGroup]='registerForm'>
                 <h2 class="text-center">Register Form</h2>
-                <div class="form-group">
-                    <label for="name">Name*: </label>
-                    <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter Name..." required>
-                </div>
-                <div class="form-group">
-                    <label for="surname">Surname*:</label>
-                    <input type="text" class="form-control" id="surname" formControlName="surname" placeholder="Enter Surname..." required>
-                </div>
-                <div class="form-group">
-                    <label for="othername">Other Name:</label>
-                    <input type="text" class="form-control" id="othername" formControlName="othername" placeholder="Enter other name...">
+                <div [formGroup]="person">
+                    <div class="form-group">
+                        <label for="name">Name*: </label>
+                        <input type="text" class="form-control" id="name" formControlName="personName" placeholder="Enter Name..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="surname">Surname*:</label>
+                        <input type="text" class="form-control" id="surname" formControlName="personSurname" placeholder="Enter Surname..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="othername">Other Name:</label>
+                        <input type="text" class="form-control" id="othername" formControlName="personOtherName" placeholder="Enter other name...">
+                    </div>
+                    <div class="form-group">
+                        <label for="jobtitle">Job Title*:</label>
+                        <select formControlName="personJobTitle" id="jobtitle" class="form-control" required>
+                        <option>Select...</option>
+                        <option value="clerk">Clerk</option>
+                        <option value="manager">Manager of Supplies Department</option>
+                    </select>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="email">Email*:</label>
@@ -26,21 +36,13 @@
                     <input type="password" class="form-control" id="password" formControlName="password" placeholder="Enter password..." required>
                 </div>
                 <div class="form-group">
-                    <label for="jobtitle">Job Title*:</label>
-                    <select formControlName="jobTitle" id="jobtitle" class="form-control" required>
-                        <option>Select...</option>
-                        <option value="clerk">Clerk</option>
-                        <option value="manager">Manager of Supplies Department</option>
-                    </select>
-                </div>
-                <div class="form-group">
                     <label for="hospital">Hospital*:</label>
-                    <select formControlName="hospital" id="hospital" class="form-control" required>
-                        <option>Select...</option>
-                        <option value="hospital1">hospital1</option>
-                        <option value="hospital2">hospital2</option>
-                        <option value="hospital3">hospital3</option>
-                    </select>
+                    <select formControlName="hospitalLabel" id="hospital" class="form-control" required>
+                    <option>Select...</option>
+                    <option value="hospital1">hospital1</option>
+                    <option value="hospital2">hospital2</option>
+                    <option value="hospital3">hospital3</option>
+                </select>
                 </div>
                 <button type="submit" class="btn-register btn btn-sm">Register</button>
                 <a routerLink="/login" class="form-text login-text">Go to login page</a>

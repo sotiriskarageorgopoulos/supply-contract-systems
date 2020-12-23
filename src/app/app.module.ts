@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import {MatBadgeModule} from '@angular/material/badge';
-import {MatIconModule} from '@angular/material/icon';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatIconModule } from '@angular/material/icon';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -15,9 +17,9 @@ import { Errorpage404Component } from './errorpage404/errorpage404.component';
 import { routes } from './routes';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { DataSharingService } from './services/dataSharing/data-sharing.service';
 import { ImportXMLComponent } from './import-xml/import-xml.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { DataSharingService } from './services/dataSharing/data-sharing.service';
+import { LoginService } from './services/login/login.service';
 
 @NgModule({
   declarations: [
@@ -38,10 +40,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     RouterModule.forRoot(routes),
     MatBadgeModule,
     MatIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
-    DataSharingService
+    DataSharingService,
+    LoginService
   ],
   bootstrap: [AppComponent]
 })

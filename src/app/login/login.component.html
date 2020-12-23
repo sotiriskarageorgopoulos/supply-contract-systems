@@ -3,7 +3,7 @@
         <div class="col-sm-4"></div>
         <div class="col-sm-3">
             <h1 class="sys-title">Hospitals Contract System</h1>
-            <form action="" method="POST" class="login-form" [formGroup]="loginForm">
+            <form (ngSubmit)="onSubmitLoginForm()" class="login-form" [formGroup]="loginForm">
                 <h2 class="text-center">Login Form</h2>
                 <div class="form-group">
                     <label for="email">Email:</label>

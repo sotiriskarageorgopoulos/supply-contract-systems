@@ -5,8 +5,17 @@ import { Injectable } from '@angular/core';
 })
 export class DataSharingService {
   private nameOfComponent: string;
+  private emailOfClerk: string;
 
   constructor() { }
+
+  setEmailOfClerk(email: string): void {
+    this.emailOfClerk = email;
+  }
+
+  getEmailOfClerk(): string {
+    return this.emailOfClerk;
+  }
 
   getNameOfComponent(): string {
     return this.nameOfComponent;

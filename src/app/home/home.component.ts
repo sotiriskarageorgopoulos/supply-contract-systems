@@ -17,12 +17,14 @@ export class HomeComponent implements OnInit {
   hospitalDetailsForm: FormGroup;
   reqForm: FormGroup;
   tenderDurationForm: FormGroup;
+  emailOfClerk: string;
 
   ngOnInit(): void {
     this.createPersonDetailsForm();
     this.createHospitalDetailsForm();
     this.createRequirementForm();
     this.createTenderDurationForm();
+    this.emailOfClerk = this.ds.getEmailOfClerk();
   }
 
   createPersonDetailsForm(): void {
