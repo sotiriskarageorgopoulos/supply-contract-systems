@@ -8,17 +8,19 @@ const supplierModel = require('../models/userSupplier');
 const crypt = require('./cryptography');
 const digSign = require('./digitalSignature');
 
-router.post("/login/clerk", (req, res) => {
+router.post("/api/login/clerk", (req, res) => {
     let email = req.body.email;
     let password = req.body.password;
-
     if (email !== null && password !== null) {
         clerkModel
             .findOne({ "email": email })
             .then(c => {
-                let decryptedPass = crypt.createDecryptedPassword(c.password, crypt.cryptoKey);
-                if (password === decryptedPass) res.json(c);
-                else res.json({ authorized: false });
+                dbPass = c.get('password');
+                if (dbPass !== '') {
+                    let decryptedPass = crypt.createDecryptedPassword(dbPass, crypt.cryptoKey);
+                    if (password === decryptedPass) res.json({ authorized: true });
+                    else res.json({ authorized: false });
+                } else res.json({ authorized: false });
             })
             .catch(err => res.status(500).send(err));
     } else {
@@ -26,7 +28,7 @@ router.post("/login/clerk", (req, res) => {
     }
 });
 
-router.post("/login/supplier", (req, res) => {
+router.post("/api/login/supplier", (req, res) => {
     let email = req.body.email;
     let password = req.body.password;
 
@@ -34,9 +36,12 @@ router.post("/login/supplier", (req, res) => {
         supplierModel
             .findOne({ "supplier.email": email })
             .then(s => {
-                let decryptedPass = crypt.createDecryptedPassword(s.password, crypt.cryptoKey);
-                if (password === decryptedPass) res.json(s);
-                else res.json({ authorized: false });
+                dbPass = s.get('password');
+                if (dbPass !== '') {
+                    let decryptedPass = crypt.createDecryptedPassword(dbPass, crypt.cryptoKey);
+                    if (password === decryptedPass) res.json({ authorized: true });
+                    else res.json({ authorized: false });
+                } else res.json({ authorized: false });
             })
             .catch(err => res.status(500).send(err));
     } else {
@@ -44,31 +49,31 @@ router.post("/login/supplier", (req, res) => {
     }
 });
 
-router.post("/register/clerk", (req, res) => {
+router.post("/api/register/clerk", (req, res) => {
     if (req.body !== null) {
-        req.body.password = createEncryptedPassword(req.body.password, cryptoKey);
+        req.body.password = crypt.createEncryptedPassword(req.body.password, crypt.cryptoKey);
         const clerk = new clerkModel(req.body);
         clerk.save()
             .then(c => res.json(c))
             .catch(err => res.status(500).send(err));
     } else {
-        res.json({ body: null });
+        res.json({ registered: false });
     }
 });
 
-router.post("/register/supplier", (req, res) => {
+router.post("/api/register/supplier", (req, res) => {
     if (req.body !== null) {
-        req.body.password = createEncryptedPassword(req.body.password, cryptoKey);
+        req.body.password = crypt.createEncryptedPassword(req.body.password, crypt.cryptoKey);
         const supplier = supplierModel(req.body);
         supplier.save()
             .then(s => res.json(s))
             .catch(err => res.status(500).send(err));
     } else {
-        res.json({ body: null });
+        res.json({ registered: false });
     }
 });
 
-router.post("/publish_tender_announcement", (req, res) => {
+router.post("/api/publish_tender_announcement", (req, res) => {
     if (req.body !== null) {
         const hospitalName = req.body.hospital.label;
         const digitalSignatureId = uuidv4();
@@ -83,11 +88,11 @@ router.post("/publish_tender_announcement", (req, res) => {
             .then(cft => res.json(cft))
             .catch(err => res.status(500).send(err));
     } else {
-        res.send({ body: null })
+        res.send({ published: false })
     }
 });
 
-router.post("/send_tender", (req, res) => {
+router.post("/api/send_tender", (req, res) => {
     if (req.body !== null) {
         const supplierName = req.body.supplier.label;
         const digitalSignatureId = uuidv4();
@@ -103,11 +108,11 @@ router.post("/send_tender", (req, res) => {
             .catch(err => res.status(500).send(err));
 
     } else {
-        res.json({ body: null });
+        res.json({ sended: false });
     }
 });
 
-router.post("/send_tender_response", (req, res) => {
+router.post("/api/send_tender_response", (req, res) => {
     if (req.body !== null) {
         const hospitalName = req.body.hospital.label;
         const digitalSignatureId = uuidv4();
@@ -122,18 +127,18 @@ router.post("/send_tender_response", (req, res) => {
             .then(tqr => res.json(tqr))
             .catch(err => res.status(500).send(err));
     } else {
-        res.json({ body: null });
+        res.json({ sended: false });
     }
 });
 
-router.get("/tender_announcements", (req, res) => {
+router.get("/api/tender_announcements", (req, res) => {
     callForTendersModel
         .find({})
         .then(cft => res.json(cft))
         .catch(err => res.status(500).send(err));
 });
 
-router.get("/tender_announcement/:id", (req, res) => {
+router.get("/api/tender_announcement/:id", (req, res) => {
     let id = req.params.id; //id of document 
     callForTendersModel
         .findById(id)
@@ -141,14 +146,14 @@ router.get("/tender_announcement/:id", (req, res) => {
         .catch(err => res.status(500).send(err));
 });
 
-router.get("/tenders", (req, res) => {
+router.get("/api/tenders", (req, res) => {
     tendererQualificationModel
         .find({})
         .then(tq => res.json(tq))
         .catch(err => res.status(500).send(err))
 });
 
-router.get("/tender/:id", (req, res) => {
+router.get("/api/tender/:id", (req, res) => {
     let id = req.params.id; //id of document
     tendererQualificationModel
         .findById(id)
@@ -156,14 +161,14 @@ router.get("/tender/:id", (req, res) => {
         .catch(err => res.status(500).send(err));
 });
 
-router.get("/tender_responses", (req, res) => {
+router.get("/api/tender_responses", (req, res) => {
     tendererQualificationResponseModel
         .find({})
         .then(tqr => res.json(tqr))
         .catch(err => res.status(500).send(err));
 });
 
-router.get("/tender_response/:id", (req, res) => {
+router.get("/api/tender_response/:id", (req, res) => {
     let id = req.params.id; //id of document
     tendererQualificationResponseModel
         .findById(id)
