@@ -19,6 +19,8 @@ export class NavbarComponent implements OnInit {
     this.hs.getTenders().subscribe(t => {
       this.tenders = t;
       this.tendersNumber = this.tenders.length;
+      console.log(this.tenders);
+      console.log(this.tendersNumber);
     });
   }
 

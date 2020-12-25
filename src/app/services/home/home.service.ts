@@ -9,7 +9,7 @@ export class HomeService {
   constructor(private http:HttpClient) { }
 
   private SEND_TENDER_ANNOUNCEMENT_PATH: string = "/api/publish_tender_announcement";
-  private GET_TENDER_NUMBER_PATH: string = "api/tender_announcements";
+  private GET_TENDER_NUMBER_PATH: string = "/api/tenders";
 
   sendTenderAnnouncement(tenderAnnouncementForm) {
     const headers = new HttpHeaders()
@@ -17,7 +17,6 @@ export class HomeService {
     return this.http.post(this.SEND_TENDER_ANNOUNCEMENT_PATH, JSON.stringify(tenderAnnouncementForm),{'headers': headers});
   }
 
-  ///api/tender_announcements
   getTenders() {
     const headers = new HttpHeaders()
                     .set("content-type","application/json");
