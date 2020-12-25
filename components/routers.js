@@ -5,6 +5,7 @@ const tendererQualificationModel = require('../models/tendererQualification');
 const tendererQualificationResponseModel = require('../models/tendererQualificationResponse');
 const clerkModel = require('../models/userClerk');
 const supplierModel = require('../models/userSupplier');
+const hospitalModel = require('../models/hospital');
 const crypt = require('./cryptography');
 const digSign = require('./digitalSignature');
 
@@ -85,7 +86,7 @@ router.post("/api/publish_tender_announcement", (req, res) => {
 
         const callForTender = new callForTendersModel(req.body);
         callForTender.save()
-            .then(cft => res.json(cft))
+            .then(cft => res.status(200).send({ published: true }))
             .catch(err => res.status(500).send(err));
     } else {
         res.send({ published: false })
@@ -176,4 +177,18 @@ router.get("/api/tender_response/:id", (req, res) => {
         .catch(err => res.status(500).send(err));
 });
 
+router.get("/api/hospitals", (req, res) => {
+    hospitalModel
+        .find()
+        .then(h => res.json(h))
+        .catch(err => res.status(500).send(err));
+});
+
+router.get("/api/clerk/:email", (req, res) => {
+    let email = req.params.email;
+    clerkModel
+        .findOne({ "email": email })
+        .then(c => res.json(c))
+        .catch(err => res.status(500).send(err));
+})
 module.exports = router;
