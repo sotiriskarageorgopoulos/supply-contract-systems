@@ -9,11 +9,20 @@ export class RegisterService {
 
   constructor(private http: HttpClient) { }
 
-  PATH: string = '/api/register/clerk';
+  private REGISTER_PATH: string = '/api/register/clerk';
+  private HOSPITALS_PATH: string = '/api/hospitals';
 
-  public register(registerForm: FormGroup) {
+  register(registerForm: FormGroup) {
     const headers = new HttpHeaders()
                     .set('content-type', 'application/json');
-    return this.http.post(this.PATH, JSON.stringify(registerForm.value), {'headers':headers});
+    return this.http.post(this.REGISTER_PATH, JSON.stringify(registerForm.value), {'headers':headers});
   }
+
+  getHospitals() {
+    const headers = new HttpHeaders()
+                    .set('content-type', 'application/json');
+    return this.http.get(this.HOSPITALS_PATH,{'headers':headers});
+  }
+
+
 }

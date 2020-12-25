@@ -21,10 +21,10 @@
                     <div class="form-group">
                         <label for="jobtitle">Job Title*:</label>
                         <select formControlName="personJobTitle" id="jobtitle" class="form-control" required>
-                        <option>Select...</option>
-                        <option value="clerk">Clerk</option>
-                        <option value="manager">Manager of Supplies Department</option>
-                    </select>
+                            <option value="" [attr.selected]="true">Select...</option>
+                            <option value="clerk">Clerk</option>
+                            <option value="manager">Manager of Supplies Department</option>
+                       </select>
                     </div>
                 </div>
                 <div class="form-group">
@@ -38,11 +38,10 @@
                 <div class="form-group">
                     <label for="hospital">Hospital*:</label>
                     <select formControlName="hospitalLabel" id="hospital" class="form-control" required>
-                    <option>Select...</option>
-                    <option value="hospital1">hospital1</option>
-                    <option value="hospital2">hospital2</option>
-                    <option value="hospital3">hospital3</option>
-                </select>
+                        <option *ngFor="let h of hospitals;let i = index;" [attr.data-index]="i" [attr.selected]="i == 0" value="{{h.hospital.label}}">
+                            {{h.hospital.label}}
+                        </option>
+                    </select>
                 </div>
                 <button type="submit" class="btn-register btn btn-sm">Register</button>
                 <a routerLink="/login" class="form-text login-text">Go to login page</a>

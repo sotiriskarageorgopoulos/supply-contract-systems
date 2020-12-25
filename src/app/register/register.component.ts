@@ -17,9 +17,11 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
   person: FormGroup;
+  hospitals;
 
   ngOnInit(): void {
     this.createRegisterForm();
+    this.getHospitals();
   }
 
   createRegisterForm(): void {
@@ -45,7 +47,11 @@ export class RegisterComponent implements OnInit {
           .register(this.registerForm)
           .subscribe()
       this.registerForm.reset();
+      this.ngOnInit();
     }
   }
 
+  getHospitals(): void {
+    this.rs.getHospitals().subscribe(h => this.hospitals = h);
+  }
 }

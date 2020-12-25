@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataSharingService } from '../services/dataSharing/data-sharing.service';
+import { HomeService } from '../services/home/home.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Person } from '../model/person';
 
 @Component({
   selector: 'app-home',
@@ -9,51 +11,66 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private ds:DataSharingService) { 
-    this.ds.setNameOfComponent(this.constructor.name);
-  }
+  person: FormGroup;
+  hospital: FormGroup;
+  tenderRequirements: FormGroup;
+  tenderDuration: FormGroup;
+  personObj: Person;
+  requirements: String[];
+  numberOfTenders;
 
-  personDetailsForm: FormGroup;
-  hospitalDetailsForm: FormGroup;
-  reqForm: FormGroup;
-  tenderDurationForm: FormGroup;
-  emailOfClerk: string;
+  constructor(private ds:DataSharingService, private hs:HomeService) { 
+    this.ds.setNameOfComponent(this.constructor.name);
+    this.personObj = this.createPersonObj();
+    console.log(this.numberOfTenders);
+    console.log(this.personObj);
+  }
 
   ngOnInit(): void {
     this.createPersonDetailsForm();
     this.createHospitalDetailsForm();
     this.createRequirementForm();
     this.createTenderDurationForm();
-    this.emailOfClerk = this.ds.getEmailOfClerk();
+    console.log(this.numberOfTenders)
+  }
+
+  createPersonObj():Person {
+    return {
+        _id: null,
+        personId: sessionStorage.getItem('personId'),
+        personName: sessionStorage.getItem('personName'),
+        personSurname: sessionStorage.getItem('personSurname'),
+        personOtherName: sessionStorage.getItem('personOtherName'),
+        personJobTitle: sessionStorage.getItem('personJobTitle')
+    }
   }
 
   createPersonDetailsForm(): void {
-    this.personDetailsForm = new FormGroup({
-      id: new FormControl(),
-      name: new FormControl(),
-      surname: new FormControl(),
-      othername: new FormControl(),
-      jobTitle: new FormControl()
+    this.person = new FormGroup({
+      personId: new FormControl(this.personObj.personId),
+      personName: new FormControl(this.personObj.personName),
+      personSurname: new FormControl(this.personObj.personSurname),
+      personOthername: new FormControl(this.personObj.personOtherName),
+      personJobTitle: new FormControl(this.personObj.personJobTitle)
     })
   }
 
   createHospitalDetailsForm(): void {
-    this.hospitalDetailsForm = new FormGroup({
+    this.hospital = new FormGroup({
       id: new FormControl(),
-      name: new FormControl(),
+      label: new FormControl(),
       email: new FormControl(),
       address: new FormControl()
     })
   }
 
   createRequirementForm(): void {
-    this.reqForm = new FormGroup({
-      requirements: new FormControl(this.getRequirements())
-    })
+    this.tenderRequirements = new FormGroup({});
+    this.requirements = this.getRequirements();
   }
 
   createTenderDurationForm(): void {
-    this.tenderDurationForm = new FormGroup({
+    this.tenderDuration = new FormGroup({
       startDateTime: new FormControl(),
       endDateTime: new FormControl()
     })
@@ -61,11 +78,54 @@ export class HomeComponent implements OnInit {
 
   getRequirements(): String[] {
     let inputs = document.getElementsByTagName("input");
-    let requirements = [];
+    let requirements:String[] = [];
     for(let i=0;i<inputs.length;i++){
-      if(inputs[i].name === 'req') requirements.push(inputs[i].value);
+      if(inputs[i].name === 'req') {
+        requirements.push(inputs[i].value);
+        inputs[i].readOnly = true;
+      }
     }
     return requirements;
+  }
+
+  onSubmitPersonForm(): void {
+    this.readOnlyInputs("personId");
+    this.readOnlyInputs("name");
+    this.readOnlyInputs("surname");
+    this.readOnlyInputs("othername");
+    this.readOnlyInputs("jobtitle");
+  }
+  onSubmitHospitalForm(): void {
+    this.readOnlyInputs("hospitalId");
+    this.readOnlyInputs("label");
+    this.readOnlyInputs("email");
+    this.readOnlyInputs("address");
+  }
+  
+  onSubmitTenderDurationForm(): void {
+    this.readOnlyInputs("startDateTime");
+    this.readOnlyInputs("endDateTime");
+    let digitalSignature = {
+      signatureId: "",
+      validationDateTime:"",
+      signatureHash:""
+    }
+    let tenderAnnouncement = {
+      person: this.person.value,
+      hospital: this.hospital.value,
+      tenderRequirements: this.requirements,
+      digitalSignature: digitalSignature,
+      tenderDuration: this.tenderDuration.value
+    };
+    console.log(tenderAnnouncement);
+    this.hs.sendTenderAnnouncement(tenderAnnouncement)
+    .subscribe(res => {
+      window.location.href = window.location.href;
+    });
+  }
+
+  readOnlyInputs(id: string) {
+    (document.getElementById(id) as HTMLInputElement).readOnly = true;
   }
 
   createNewReqInputs(): void {

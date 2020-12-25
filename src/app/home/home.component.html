@@ -2,31 +2,27 @@
     <div class="row">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
-            <form method="POST" action="" [formGroup]="personDetailsForm">
+            <form (ngSubmit)="onSubmitPersonForm()" [formGroup]="person">
                 <h1>Person Details</h1>
                 <div class="form-group">
-                    <label for="id">ID*: </label>
-                    <input type="text" class="form-control" id="id" formControlName="id" required>
+                    <label for="personId">ID*: </label>
+                    <input type="text" class="form-control" id="personId" formControlName="personId" [attr.placeholder]="personObj.personId" required>
                 </div>
                 <div class="form-group">
                     <label for="name">Name*: </label>
-                    <input type="text" class="form-control" id="name" formControlName="name" required>
+                    <input type="text" class="form-control" id="name" formControlName="personName" [attr.placeholder]="personObj.personName" required>
                 </div>
                 <div class="form-group">
                     <label for="surname">Surname*: </label>
-                    <input type="text" class="form-control" id="surname" formControlName="surname" required>
+                    <input type="text" class="form-control" id="surname" formControlName="personSurname" [attr.placeholder]="personObj.personSurname" required>
                 </div>
                 <div class="form-group">
                     <label>Other Name: </label>
-                    <input type="text" class="form-control" id="othername" formControlName="othername" required>
+                    <input type="text" class="form-control" id="othername" formControlName="personOthername" [attr.placeholder]="personObj.personOtherName" required>
                 </div>
                 <div class="form-group">
                     <label for="jobtitle">Job Title*: </label>
-                    <select formControlName="jobTitle" id="jobtitle" class="form-control" required>
-                        <option value="">Select...</option>
-                        <option value="clerk">clerk</option>
-                        <option value="manager">manager</option>
-                    </select>
+                    <input type="text" class="form-control" id="jobtitle" formControlName="personJobTitle" [attr.placeholder]="personObj.personJobTitle" required>
                 </div>
                 <button type="submit" class="btn btn-sm next-btn">Next</button>
             </form>
@@ -36,15 +32,15 @@
     <div class="row">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
-            <form method="POST" action="" [formGroup]="hospitalDetailsForm">
+            <form (ngSubmit)="onSubmitHospitalForm()" [formGroup]="hospital">
                 <h1>Hospital Details</h1>
                 <div class="form-group">
-                    <label for="id">ID*:</label>
-                    <input type="text" id="id" class="form-control" formControlName="id" required>
+                    <label for="hospitalId">ID*:</label>
+                    <input type="text" id="hospitalId" class="form-control" formControlName="id" required>
                 </div>
                 <div class="form-group">
-                    <label for="name">Name*:</label>
-                    <input type="text" id="name" class="form-control" formControlName="name" required>
+                    <label for="label">Label*:</label>
+                    <input type="text" id="label" class="form-control" formControlName="label" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email*:</label>
@@ -62,12 +58,12 @@
     <div class="row">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
-            <form method="POST" action="" [formGroup]="reqForm">
+            <form [formGroup]="tenderRequirements">
                 <h1>Requirements</h1>
                 <div id="reqInputs" class="form-group"></div>
                 <div id="rmBtn"></div>
-                <button type="button" class="btn btn-sm req-add-btn" (click)="createNewReqInputs()">Add Requirement</button>
-                <button type="button" class="btn btn-sm next-btn" (click)="getRequirements()">Next</button>
+                <button type="button" id="addBtn" class="btn btn-sm req-add-btn" (click)="createNewReqInputs()">Add Requirement</button>
+                <button type="button" id="btn-accept-req" class="btn btn-sm next-btn" (click)="getRequirements()">Next</button>
             </form>
         </div>
         <div class="col-sm-4"></div>
@@ -75,15 +71,15 @@
     <div class="row">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
-            <form method="POST" action="" class="form-tender-duration" [formGroup]="tenderDurationForm">
+            <form (ngSubmit)="onSubmitTenderDurationForm()" [formGroup]="tenderDuration" class="form-tender-duration">
                 <h1>Tender Duration</h1>
                 <div class="form-group">
                     <label for="startdatetime">Start Datetime*:</label>
-                    <input type="datetime-local" id="startdatetime" class="form-control" formControlName="startDateTime" required>
+                    <input type="datetime-local" id="startDateTime" class="form-control" formControlName="startDateTime" required>
                 </div>
                 <div class="form-group">
                     <label for="enddatetime">End Datetime*:</label>
-                    <input type="datetime-local" id="enddatetime" class="form-control" formControlName="endDateTime" required>
+                    <input type="datetime-local" id="endDateTime" class="form-control" formControlName="endDateTime" required>
                 </div>
                 <button type="submit" class="btn btn-sm next-btn">Send</button>
             </form>
