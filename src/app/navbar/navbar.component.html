@@ -15,13 +15,13 @@
         <section [ngSwitch]="nameOfComponent">
             <div class="row" *ngSwitchCase="'HomeComponent'">
                 <a class="nav-link text-white" routerLink="/notifications">
-                    <mat-icon matBadge="15" matBadgeColor="warn" style="font-size: 20px;">notification_important</mat-icon>
+                    <mat-icon matBadge="{{tendersNumber}}" matBadgeColor="warn" style="font-size: 20px;">notification_important</mat-icon>
                 </a>
                 <a class="nav-link text-white" routerLink="home"><i class="fa fa-sign-in mr-2" aria-hidden="true"></i>Logout</a>
             </div>
             <div class="row" *ngSwitchCase="'ImportXMLComponent'">
                 <a class="nav-link text-white" routerLink="/notifications">
-                    <mat-icon matBadge="15" matBadgeColor="warn" style="font-size: 20px;">notification_important</mat-icon>
+                    <mat-icon matBadge="{{tendersNumber}}" matBadgeColor="warn" style="font-size: 20px;">notification_important</mat-icon>
                 </a>
                 <a class="nav-link text-white" routerLink="home"><i class="fa fa-sign-in mr-2" aria-hidden="true"></i>Logout</a>
             </div>
