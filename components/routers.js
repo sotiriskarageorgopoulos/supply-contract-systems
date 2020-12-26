@@ -155,10 +155,15 @@ router.get("/api/tenders", (req, res) => {
 });
 
 router.get("/api/tender/:id", (req, res) => {
-    let id = req.params.id; //id of document
+    let id = req.params.id;
     tendererQualificationModel
-        .findById(id)
-        .then(tq => res.json(tq))
+        .findOne({ "supplier.id": id })
+        .then(tq => {
+            let supplierName = tq.supplier.label;
+            let digitalSign = tq.digitalSignature.signatureHash;
+            if (digSign.validateDigitalSignature(supplierName, digitalSign)) return res.json(tq);
+            else return res.json({ "validation": false });
+        })
         .catch(err => res.status(500).send(err));
 });
 
