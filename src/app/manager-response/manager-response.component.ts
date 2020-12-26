@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { DataSharingService } from '../services/dataSharing/data-sharing.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { ManagerResponseService } from '../services/manager-response/manager-response.service';
+import { Tender } from '../model/tender';
+import { Qualification } from '../model/qualification';
+import { Evidence } from '../model/evidence';
 
 @Component({
   selector: 'app-manager-response',
@@ -9,24 +14,49 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class ManagerResponseComponent implements OnInit {
 
-  constructor(private ds:DataSharingService) { 
-    this.ds.setNameOfComponent(this.constructor.name);
-  }
   counter: number = 0;
   responseForm: FormGroup;
-  ngOnInit(): void {
+  tender: Tender;
+  qualifications: Qualification[];
+  tenderId: string;
+  evidences: Evidence[];
+  evidenceList: Evidence[];
+  hospital: FormGroup;
+
+  constructor(private ds:DataSharingService,private route:ActivatedRoute,private mrs:ManagerResponseService) { 
+    this.ds.setNameOfComponent(this.constructor.name);
+    this.tenderId = this.route.snapshot.params['id'];
+    this.getTender();
     this.createResponseForm();
+    this.createHospitalForm();
   }
-  
+
+  ngOnInit(): void {}
+
+  getTender() {
+    this.mrs.getTender(this.tenderId).subscribe(t =>{
+    this.tender = t;
+    this.qualifications = this.tender.qualifications;
+    this.evidences = this.tender.evidences;
+    this.tender.qualifications.map(q => {
+      this.tender.evidences.map(e => {
+        if(q.evidenceId === e.evidenceId){
+          this.evidenceList.push({evidenceId:e.evidenceId,description:e.description});
+        }
+      });
+    });
+    }); 
+  }
+
   createResponseForm(): void {
     this.responseForm = new FormGroup({
       decision: new FormControl(),
-      exclusionReason: new FormControl(this.getExclusionReason())
-    })
+    });
   }
 
   getExclusionReason(): String {
-     return document.getElementsByTagName("textarea")[0].value;
+     if(document.getElementsByTagName("textarea")[0] !== undefined)
+     return (document.getElementsByTagName("textarea")[0] as HTMLTextAreaElement).value;
   }
 
   showExclusionReasonInput(): void {
@@ -67,4 +97,59 @@ export class ManagerResponseComponent implements OnInit {
     document.getElementById('btn-add-exclusion-reason').style.display = "block";
   }
 
+  onSubmitResponseForm() {
+      let managerResponse = {
+        hospital: this.hospital.value ,
+        supplier: this.tender.supplier,
+        person: this.createPersonObj(),
+        qualificationResolution: this.createResponseObj(),
+        digitalSignature: {
+          signatureId: "",
+          validationDateTime: "",
+          signatureHash: ""
+        }
+      }
+      this.mrs.postDecision(managerResponse).subscribe(res => {
+        window.location.href = window.location.href;
+      });
+  }
+
+  createHospitalForm() {
+    this.hospital = new FormGroup({
+      id: new FormControl(),
+      label: new FormControl(),
+      email: new FormControl(),
+      address: new FormControl()
+    })
+  }
+
+  onSubmitHospitalForm() {
+      this.readOnlyInputs("hospitalId");
+      this.readOnlyInputs("label");
+      this.readOnlyInputs("email");
+      this.readOnlyInputs("address");
+  }
+
+  readOnlyInputs(id: string) {
+    (document.getElementById(id) as HTMLInputElement).readOnly = true;
+  }
+
+  createPersonObj() {
+    return {
+        _id: null,
+        personId: sessionStorage.getItem('personId'),
+        personName: sessionStorage.getItem('personName'),
+        personSurname: sessionStorage.getItem('personSurname'),
+        personOtherName: sessionStorage.getItem('personOtherName'),
+        personJobTitle: sessionStorage.getItem('personJobTitle')
+    }
+  }
+
+  createResponseObj() {
+    return {
+      exlcusionReasonDesc: this.getExclusionReason(),
+      decision: Boolean(this.responseForm.value.decision),
+      decisionDate: new Date().toISOString()
+    }
+  }
 }

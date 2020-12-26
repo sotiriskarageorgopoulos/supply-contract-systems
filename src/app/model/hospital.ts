@@ -1,6 +1,3 @@
-export class Hospital {
-    "id":string;
-    "label":string;
-    "email":string;
-    "address":string;
-}
+import {LegalEntity} from './legalEntity'
+
+export class Hospital extends LegalEntity {}

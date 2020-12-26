@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DataSharingService } from '../services/dataSharing/data-sharing.service';
 import { HomeService } from '../services/home/home.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +14,7 @@ export class NavbarComponent implements OnInit {
   tendersNumber: number;
   tenders: any;
 
-  constructor(private ds:DataSharingService, private hs: HomeService) { }
+  constructor(private ds:DataSharingService, private hs: HomeService, private router:Router) {}
 
   ngOnInit(): void {
     this.hs.getTenders().subscribe(t => {
@@ -28,4 +29,12 @@ export class NavbarComponent implements OnInit {
     this.nameOfComponent = this.ds.getNameOfComponent();
   }
 
+  logOut():void {
+    sessionStorage.setItem('personId', '');
+    sessionStorage.setItem('personName', '');
+    sessionStorage.setItem('personSurname', '');
+    sessionStorage.setItem('personOtherName', '');
+    sessionStorage.setItem('personJobTitle', '');
+    this.router.navigate(['/login']);
+  }
 }
