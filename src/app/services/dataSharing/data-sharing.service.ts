@@ -5,8 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class DataSharingService {
   private nameOfComponent: string;
-  private clerkId: string;
-  private hospitalLabel: string;
 
   constructor() { }
 

@@ -17,7 +17,6 @@ import { Errorpage404Component } from './errorpage404/errorpage404.component';
 import { routes } from './routes';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ImportXMLComponent } from './import-xml/import-xml.component';
 import { DataSharingService } from './services/dataSharing/data-sharing.service';
 import { LoginService } from './services/login/login.service';
 
@@ -31,8 +30,7 @@ import { LoginService } from './services/login/login.service';
     NotificationsComponent,
     Errorpage404Component,
     FooterComponent,
-    NavbarComponent,
-    ImportXMLComponent
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
