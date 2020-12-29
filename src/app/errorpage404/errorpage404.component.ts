@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataSharingService } from '../services/dataSharing/data-sharing.service';
 
 @Component({
   selector: 'app-errorpage404',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Errorpage404Component implements OnInit {
 
-  constructor() { }
+  constructor(private ds:DataSharingService) { 
+    this.ds.setNameOfComponent(this.constructor.name);
+  }
 
   ngOnInit(): void {
   }
