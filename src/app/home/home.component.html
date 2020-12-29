@@ -1,0 +1,14 @@
+<section class="container-fluid tenders-bg">
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <section class="list-group list-style">
+                <div class="list-group-item list-bg" *ngFor="let cft of callForTenders">
+                    <p>Hospital: {{cft.hospital.id}}</p>
+                    <a class="btn btn-sm btn-success" (click)="goToTender(cft)">Read Tender Announcement</a>
+                </div>
+            </section>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</section>

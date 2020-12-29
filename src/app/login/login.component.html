@@ -1,0 +1,22 @@
+<section class="container-fluid login-bg">
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-3">
+            <h1 class="sys-title">Suppliers Contract System</h1>
+            <form (ngSubmit)="onSubmitLoginForm()" class="login-form" [formGroup]="loginForm">
+                <h2 class="text-center">Login Form</h2>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="text" class="form-control" id="email" formControlName="email" placeholder="Enter your email..." required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" id="password" formControlName="password" placeholder="Enter your password..." required>
+                </div>
+                <button type="submit" class="login-btn btn btn-sm">Login</button>
+                <a routerLink="/register" class="form-text register-text">Register</a>
+            </form>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</section>

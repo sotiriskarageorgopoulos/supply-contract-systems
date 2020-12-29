@@ -1,0 +1,18 @@
+$font-sizes:("small":14px, "medium":18px, "big":20px, "biggest":30px);
+$font-weights:("regular":400, "medium":500, "bold":700);
+@mixin bg($type-of-bg) {
+    @if $type-of-bg=='component-bg' {
+        background-color: limegreen;
+    }
+    @else if $type-of-bg=='form-bg' {
+        background-color: #EAEAEA;
+    }
+}
+
+@mixin form-btn-style {
+    margin-left: 40%;
+    width: 20%;
+    background-color: limegreen !important;
+    border-color: limegreen;
+    color: white;
+}

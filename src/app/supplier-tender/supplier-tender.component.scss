@@ -1,0 +1,36 @@
+@import '../app.component';
+.tender-message {
+    padding: 2%;
+    margin: 3% auto 4.7% auto;
+    @include bg('form-bg')
+}
+
+.bg {
+    @include bg('component-bg');
+}
+
+.form-response {
+    padding: 2%;
+    box-shadow: 5px 10px aliceblue;
+    width: 102%;
+    margin: 3% auto 8% auto;
+    @include bg('form-bg')
+}
+
+button {
+    margin-bottom: 2%;
+}
+
+.message-layout {
+    width: 100%;
+}
+
+.crop {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.next-btn {
+    @include form-btn-style;
+}

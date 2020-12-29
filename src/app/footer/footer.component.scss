@@ -1,0 +1,25 @@
+@import '../app.component';
+.footer-login,
+.footer-home,
+.footer-register,
+.footer-supplier-tender,
+.footer-supplier-response {
+    width: 100%;
+    position: inherit;
+    bottom: 0px;
+    color: whitesmoke;
+    @include bg('component-bg');
+}
+
+.copyright-text-alignment {
+    margin-left: 40%;
+}
+
+.big-fonts {
+    font-size: map-get($font-sizes, "big");
+}
+
+.biggest-fonts {
+    font-size: map-get($font-sizes, "biggest");
+    color: whitesmoke;
+}

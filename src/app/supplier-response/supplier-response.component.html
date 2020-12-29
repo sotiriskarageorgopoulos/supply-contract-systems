@@ -1,0 +1,28 @@
+<section class="container-fluid forms-bg">
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <form [formGroup]="qualificationForm">
+                <h2>Qualifications</h2>
+                <div id="qualInputs" class="form-group"></div>
+                <div id="rmBtn"></div>
+                <button type="button" id="addBtnQuals" class="btn btn-sm req-add-btn" (click)="createNewQualInputs()">Add Qualification</button>
+                <button type="submit" class="btn btn-sm next-btn" (click)="getQualifications()">Next</button>
+            </form>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <form (ngSubmit)="onSubmit()" [formGroup]="evidenceForm" class="evidence-form">
+                <h2>Evidences</h2>
+                <div id="evidenceInputs" class="form-group"></div>
+                <div id="rmBtn1"></div>
+                <button type="button" id="addBtnEvidences" class="btn btn-sm req-add-btn" (click)="createNewEvidences()">Add Evidences</button>
+                <button type="submit" id="nextBtn" class="btn btn-sm next-btn" (click)="getEvidences()">Send Tender</button>
+            </form>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</section>

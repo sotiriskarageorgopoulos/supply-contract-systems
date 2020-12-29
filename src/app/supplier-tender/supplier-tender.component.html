@@ -1,0 +1,21 @@
+<section class="container-fluid bg message-layout">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-7 tender-message">
+            <p><b>Hospital Name: </b>{{callForTender?.hospital.label}}</p>
+            <p><b>Hospital Email: </b> {{callForTender?.hospital.email}}</p>
+            <p><b>Hospital Address: </b>{{callForTender?.hospital.address}}</p>
+            <h1>Requirements</h1>
+            <table class="table table-hover">
+                <tr *ngFor="let q of callForTender?.tenderRequirements">
+                    <td>{{q}}</td>
+                </tr>
+            </table>
+            <p><b>Start Date: </b>{{callForTender?.tenderDuration.startDateTime}}</p>
+            <p><b>End Date: </b>{{callForTender?.tenderDuration.endDateTime}}</p>
+            <p class="crop"><b>Digital Signature:</b> {{callForTender?.digitalSignature.signatureHash}}</p>
+            <button type="button" (click)="doATender()" class="btn btn-success">Do Tender</button>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+</section>

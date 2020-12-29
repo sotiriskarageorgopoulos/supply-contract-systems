@@ -1,0 +1,30 @@
+@import '../app.component';
+.btn-register {
+    @include form-btn-style;
+}
+
+.register-bg {
+    @include bg('component-bg');
+}
+
+.sys-title {
+    color: whitesmoke;
+    margin: 4% auto 0 10%;
+    font-size: 27px;
+}
+
+.register-form {
+    padding: 5%;
+    margin: 10% auto 60% auto;
+    color: limegreen;
+    box-shadow: 5px 10px whitesmoke;
+    @include bg('form-bg')
+}
+
+.login-text {
+    color: limegreen;
+}
+
+.login-text:hover {
+    text-decoration: none;
+}
