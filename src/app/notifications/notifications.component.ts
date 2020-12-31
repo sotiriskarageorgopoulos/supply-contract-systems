@@ -14,13 +14,15 @@ export class NotificationsComponent implements OnInit {
 
   constructor(private ds:DataSharingService,private hs:HomeService,private router:Router) {
     this.ds.setNameOfComponent(this.constructor.name);
-    this.getTenders();
+    let hospitalLabel = (sessionStorage.getItem('hospitalLabel') as string);
+    console.log(hospitalLabel);
+    this.getTenders(hospitalLabel);
    }
 
   ngOnInit(): void {}
 
-  getTenders() {
-    return this.hs.getTenders().subscribe(t =>{
+  getTenders(hospitalLabel) {
+    return this.hs.getTenders(hospitalLabel).subscribe(t =>{
       this.tenders = t
       console.log(this.tenders);
     });

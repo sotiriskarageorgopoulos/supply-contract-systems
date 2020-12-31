@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
             sessionStorage.setItem('personSurname', this.clerkInfo.person.personSurname);
             sessionStorage.setItem('personOtherName', this.clerkInfo.person.personOtherName);
             sessionStorage.setItem('personJobTitle', this.clerkInfo.person.personJobTitle);
+            sessionStorage.setItem('hospitalLabel',this.clerkInfo.hospitalLabel);
             this.router.navigate(['/home']);
             this.loginForm.reset();
          }

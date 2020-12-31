@@ -13,11 +13,14 @@ export class NavbarComponent implements OnInit {
   nameOfComponent: string;
   tendersNumber: number;
   tenders: any;
+  hospitalLabel: string;
 
   constructor(private ds:DataSharingService, private hs: HomeService, private router:Router) {}
 
   ngOnInit(): void {
-    this.hs.getTenders().subscribe(t => {
+    this.hospitalLabel = (sessionStorage.getItem('hospitalLabel') as string);
+    console.log(this.hospitalLabel);
+    this.hs.getTenders(this.hospitalLabel).subscribe(t => {
       this.tenders = t;
       this.tendersNumber = this.tenders.length;
       console.log(this.tenders);
