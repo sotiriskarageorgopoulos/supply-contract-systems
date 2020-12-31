@@ -132,6 +132,19 @@ router.post("/api/send_tender_response", (req, res) => {
     }
 });
 
+router.get("/api/tender_announcement/:id", (req, res) => {
+    let id = req.params.id;
+    callForTendersModel
+        .findOne({ "hospital.id": id })
+        .then(cft => {
+            let hospitalName = cft.hospital.label;
+            let digitalSign = cft.digitalSignature.signatureHash;
+            if (digSign.validateDigitalSignature(hospitalName, digitalSign)) return res.json(cft);
+            else return res.json({ "validation": false });
+        })
+        .catch(err => res.status(500).send(err));
+});
+
 router.get("/api/tender_announcements", (req, res) => {
     callForTendersModel
         .find({})
@@ -139,19 +152,12 @@ router.get("/api/tender_announcements", (req, res) => {
         .catch(err => res.status(500).send(err));
 });
 
-router.get("/api/tender_announcement/:id", (req, res) => {
-    let id = req.params.id; //id of document 
-    callForTendersModel
-        .findById(id)
-        .then(cft => res.json(cft))
-        .catch(err => res.status(500).send(err));
-});
-
-router.get("/api/tenders", (req, res) => {
+router.get("/api/tenders/:label", (req, res) => {
+    let label = req.params.label;
     tendererQualificationModel
-        .find({})
+        .find({ "hospital.label": label })
         .then(tq => res.json(tq))
-        .catch(err => res.status(500).send(err))
+        .catch(err => res.status(500).send(err));
 });
 
 router.get("/api/tender/:id", (req, res) => {
@@ -167,17 +173,18 @@ router.get("/api/tender/:id", (req, res) => {
         .catch(err => res.status(500).send(err));
 });
 
-router.get("/api/tender_responses", (req, res) => {
+router.get("/api/tender_response/:id", (req, res) => {
+    let id = req.params.id;
     tendererQualificationResponseModel
-        .find({})
+        .findOne({ "supplier.id": id })
         .then(tqr => res.json(tqr))
         .catch(err => res.status(500).send(err));
 });
 
-router.get("/api/tender_response/:id", (req, res) => {
-    let id = req.params.id; //id of document
+router.get("/api/tender_responses/:id", (req, res) => {
+    let id = req.params.id;
     tendererQualificationResponseModel
-        .findById(id)
+        .find({ "supplier.id": id })
         .then(tqr => res.json(tqr))
         .catch(err => res.status(500).send(err));
 });
@@ -189,11 +196,27 @@ router.get("/api/hospitals", (req, res) => {
         .catch(err => res.status(500).send(err));
 });
 
+router.get("/api/hospital/:id", (req, res) => {
+    let id = req.params.id;
+    hospitalModel
+        .findOne({ "hospital.id": id })
+        .then(h => res.json(h))
+        .catch(err => res.status(500).send(err));
+})
+
 router.get("/api/clerk/:email", (req, res) => {
     let email = req.params.email;
     clerkModel
         .findOne({ "email": email })
         .then(c => res.json(c))
         .catch(err => res.status(500).send(err));
-})
+});
+
+router.get('/api/supplier/:email', (req, res) => {
+    let email = req.params.email;
+    supplierModel
+        .findOne({ "supplier.email": email })
+        .then(s => res.json(s))
+        .catch(err => res.status(500).send(err));
+});
 module.exports = router;

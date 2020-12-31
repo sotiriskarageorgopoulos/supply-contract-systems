@@ -6,6 +6,7 @@ const qualificationSchema = require('./schemas/qualification');
 
 const tendererQualificationSchema = new mongoose.Schema({
     supplier: legalEntitySchema,
+    hospital: legalEntitySchema,
     qualifications: [qualificationSchema],
     evidences: [evidenceSchema],
     digitalSignature: digitalSignatureSchema

@@ -5,6 +5,12 @@
         "email": "supplier@domain.com",
         "address": "Av. del General Perón, 28020 Madrid, Spain"
     },
+    "hospital": {
+        "id": "H1",
+        "label": "Hospital 1",
+        "email": "h1@domain.com",
+        "address": "Via dei Piccolomini, 2, 20151 Milano MI, Italy"
+    },
     "qualifications": [{
             "tendererCapability": "capability1",
             "description": "Viverra nam libero justo laoreet sit amet cursus sit amet. In hac habitasse platea dictumst quisque sagittis purus sit. Aliquam eleifend mi in nulla posuere sollicitudin. Dui nunc mattis enim ut tellus elementum sagittis vitae et.",
