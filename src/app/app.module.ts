@@ -15,6 +15,8 @@ import { Errorpage404Component } from './errorpage404/errorpage404.component';
 
 import {routes} from '../app/routes';
 import { SupplierResponseComponent } from './supplier-response/supplier-response.component';
+import { HospitalResponseComponent } from './hospital-response/hospital-response.component';
+import { HospitalsResponseComponent } from './hospitals-response/hospitals-response.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { SupplierResponseComponent } from './supplier-response/supplier-response
     LoginComponent,
     RegisterComponent,
     Errorpage404Component,
-    SupplierResponseComponent
+    SupplierResponseComponent,
+    HospitalResponseComponent,
+    HospitalsResponseComponent
   ],
   imports: [
     BrowserModule,

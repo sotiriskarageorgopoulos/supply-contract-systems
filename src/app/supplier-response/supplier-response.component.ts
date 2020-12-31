@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { Hospital } from '../model/hospital';
 import { DataSharingService } from '../services/dataSharing/data-sharing.service';
 import { SupplierResponseService } from '../services/supplierResponse/supplier-response.service'; 
 
@@ -12,16 +14,30 @@ export class SupplierResponseComponent implements OnInit {
 
   qualificationForm: FormGroup = new FormGroup({});
   evidenceForm: FormGroup = new FormGroup({});
+  hospitalId: string;
+  hospitalDetails;
   qualifications;
   evidences;
 
 
-  constructor(private ds:DataSharingService, private srs: SupplierResponseService ) {
+  constructor(private ds:DataSharingService, private srs: SupplierResponseService, private route:ActivatedRoute ) {
     this.ds.setNameOfComponent(this.constructor.name);
+    let hospitalId = this.route.snapshot.params['id'];
+    console.log(hospitalId);
+    this.getHospitalDetails(hospitalId);
    }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
+  getHospitalDetails(hospitalId) {
+    this.srs
+    .getHospital(hospitalId)
+    .subscribe(h =>{
+      this.hospitalDetails = h;
+      console.log(this.hospitalDetails);
+    });
+  }
 
   createNewEvidences(): void {
     let divElement = document.getElementById("evidenceInputs");
@@ -50,8 +66,10 @@ export class SupplierResponseComponent implements OnInit {
      email: sessionStorage.getItem('supplierEmail'),
      address: sessionStorage.getItem('supplierAddress'),
     }
+    console.log(this.hospitalDetails);
     let tender = {
       supplier: supplier,
+      hospital: this.hospitalDetails.hospital,
       qualifications: this.qualifications,
       evidences: this.evidences,
       digitalSignature: {
@@ -60,9 +78,9 @@ export class SupplierResponseComponent implements OnInit {
         signatureHash: ""
       }
     }
-
+    console.log(tender);
     this.srs.sendTender(tender).subscribe();
-    this.ngOnInit();
+    window.location.href = window.location.href;
   }
 
   getEvidences() {

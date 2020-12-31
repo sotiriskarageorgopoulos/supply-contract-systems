@@ -1,0 +1,14 @@
+<section class="container-fluid tenders-bg">
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <section class="list-group list-style">
+                <div class="list-group-item list-bg" *ngFor="let h of hospitalsResponses">
+                    <p>Hospital: {{h.hospital.label}}</p>
+                    <a class="btn btn-sm btn-success" (click)="goToHospitalResponse()">Read Hospital Response</a>
+                </div>
+            </section>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</section>

@@ -1,0 +1,18 @@
+<section class="container-fluid bg message-layout">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-7 tender-message">
+            <h1>Qualification Resolution</h1>
+            <p><b>Hospital Name: </b>{{hospitalResponse?.hospital.label}}</p>
+            <p><b>Hospital Email: </b> {{hospitalResponse?.hospital.email}}</p>
+            <p><b>Hospital Address: </b>{{hospitalResponse?.hospital.address}}</p>
+            <p><b>Manager: </b>{{hospitalResponse?.person.personName}} {{hospitalResponse?.person.personOtherName}} {{hospitalResponse?.person.personSurname}}
+            </p>
+            <p><b>Decision: </b>{{hospitalResponse?.qualificationResolution.decision}}</p>
+            <p><b>Decision Date: </b>{{hospitalResponse?.qualificationResolution.decisionDate}}</p>
+            <p *ngIf="hospitalResponse?.qualificationResolution.exlcusionReasonDesc !== undefined"><b>Exclusion Reason: {{hospitalResponse?.qualificationResolution.exlcusionReasonDesc}}</b></p>
+            <p class="crop"><b>Digital Signature:</b> {{hospitalResponse?.digitalSignature.signatureHash}}</p>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+</section>
