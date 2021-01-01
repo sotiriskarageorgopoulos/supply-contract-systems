@@ -49,6 +49,10 @@ PORT=3000 //The port is running your API
 ```
 openssl req -newkey rsa:4096 -x509 -nodes -keyout key.pem -out certificate.pem 
 ```
+6. Run API with the following command.
+```
+npm run dev
+```
 ## Author
 Sotiris Karageorgopoulos
 
