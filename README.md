@@ -21,7 +21,6 @@ npm install
 3. Run app with the following command.(You must run first the API in branch api)
 ```
 npm start
-
 ```
 ## Author
 Sotiris Karageorgopoulos
