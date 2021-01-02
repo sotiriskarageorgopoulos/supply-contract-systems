@@ -148,7 +148,7 @@ export class ManagerResponseComponent implements OnInit {
   createResponseObj() {
     return {
       exlcusionReasonDesc: this.getExclusionReason(),
-      decision: Boolean(this.responseForm.value.decision),
+      decision: this.responseForm.value.decision,
       decisionDate: new Date().toISOString()
     }
   }

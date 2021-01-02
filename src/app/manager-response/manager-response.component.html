@@ -68,8 +68,8 @@
                 <div class="form-group">
                     <label for="decision">Decision*:</label>
                     <select id="decision" formControlName="decision" class="form-control" required>
-                        <option value="true" [attr.selected]="true">Accept</option>
-                        <option value="false">Decline</option>
+                        <option [value]="true">Accept</option>
+                        <option [value]="false">Decline</option>
                     </select>
                 </div>
                 <button class="btn btn-sm btn-danger" type="button" id="btn-add-exclusion-reason" (click)="showExclusionReasonInput()">Add Exclusion Reason</button>
