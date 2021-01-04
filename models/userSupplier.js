@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const legalEntitySchema = require('./schemas/legalEntity');
 
 const supplierSchema = mongoose.Schema({
-    supplier: legalEntitySchema,
+    supplier: { required: true, type: legalEntitySchema },
     password: {
         type: String,
         required: true

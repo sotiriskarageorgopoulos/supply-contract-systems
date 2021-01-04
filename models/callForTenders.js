@@ -7,7 +7,7 @@ const tenderDurationSchema = require('./schemas/tenderDuration');
 const callForTendersSchema = new mongoose.Schema({
     person: personSchema,
     hospital: legalEntitySchema,
-    tenderRequirements: [String],
+    tenderRequirements: [{ required: true, type: String }],
     digitalSignature: digitalSignatureSchema,
     tenderDuration: tenderDurationSchema
 });

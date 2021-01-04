@@ -5,11 +5,11 @@ const personSchema = require('./schemas/person');
 const digitalSignatureSchema = require('./schemas/digitalSignature');
 
 const tendererQualificationResponseSchema = new mongoose.Schema({
-    hospital: legalEntitySchema,
-    supplier: legalEntitySchema,
-    qualificationResolution: qualificationResolutionSchema,
-    person: personSchema,
-    digitalSignature: digitalSignatureSchema
+    hospital: { required: true, type: legalEntitySchema },
+    supplier: { required: true, type: legalEntitySchema },
+    qualificationResolution: { required: true, type: qualificationResolutionSchema },
+    person: { required: true, type: personSchema },
+    digitalSignature: { required: true, type: digitalSignatureSchema }
 });
 
 const tendererQualificationResponse = new mongoose.model('tendererQualificationResponse', tendererQualificationResponseSchema);
