@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   tenderRequirements: FormGroup;
   tenderDuration: FormGroup;
   personObj: Person;
-  requirements: String[];
+  requirements;
   numberOfTenders;
 
   constructor(private ds:DataSharingService, private hs:HomeService) { 
@@ -66,7 +66,6 @@ export class HomeComponent implements OnInit {
 
   createRequirementForm(): void {
     this.tenderRequirements = new FormGroup({});
-    this.requirements = this.getRequirements();
   }
 
   createTenderDurationForm(): void {
@@ -76,7 +75,7 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  getRequirements(): String[] {
+  getRequirements(): void {
     let inputs = document.getElementsByTagName("input");
     let requirements:String[] = [];
     for(let i=0;i<inputs.length;i++){
@@ -85,7 +84,7 @@ export class HomeComponent implements OnInit {
         inputs[i].readOnly = true;
       }
     }
-    return requirements;
+    this.requirements = requirements;
   }
 
   onSubmitPersonForm(): void {
