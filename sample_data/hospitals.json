@@ -1,0 +1,8 @@
+{
+    "hospital": {
+        "id": "H1",
+        "label": "Hospital 1",
+        "email": "h1@domain.com",
+        "address": "Via dei Piccolomini, 2, 20151 Milano MI, Italy"
+    }
+}
